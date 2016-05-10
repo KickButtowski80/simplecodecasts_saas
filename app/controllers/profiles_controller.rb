@@ -2,6 +2,19 @@ class ProfilesController < ApplicationController
     def new
         # form where a user can fill out their own profile.
         @user = User.find( params[:user_id] )
+=begin
+          @user.build_profile is the same as
+  
+          Profile.new(:user_id => @user.id)
+          while @user.create_profile is the same as
+          
+          Profile.create(:user_id => @user.id)
+          @user.create_profile can be presented with build_profile like this:
+          
+          profile = @user.build_profile
+          profile.save
+=end
+       
         @profile = Profile.new
     end
     def create 
